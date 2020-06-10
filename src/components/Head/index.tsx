@@ -19,7 +19,7 @@ const Head: FC<HeadProps> = (props) => (
     <meta name="description" content={props.description} />
     <meta name="theme-color" content="#246" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {/* <link rel="icon" sizes="192x192" href="/touch-icon.png" /> */}
+    <link rel="icon" sizes="192x192" href="/touch-icon.png" />
     <link rel="icon" href="/favicon.ico" />
     <meta property="og:url" content={props.url! + props.path!} />
     <meta property="og:type" content="website" />

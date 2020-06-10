@@ -1,16 +1,25 @@
-import React, { FC } from 'react'
-import { withRouter } from 'next/router'
+import React from 'react'
 import Layout from '../components/Layout'
+import Head from '../components/Head';
+import { NextPage } from 'next';
+
 type PostProps = {
-  router?: any
+  title: string
 }
-const Post: FC<PostProps> = ({ router }) => {
-  const { title } = router.query
+const Post: NextPage<PostProps> = (props) => {
   return (
-    <Layout title={title}>
-      <h1>{title}</h1>
-      <p>This is the blog post content.</p>
-    </Layout>
+    <>
+      <Head title={props.title} />
+      <Layout>
+        <h1>{props.title}</h1>
+        <p>This is the blog post content.</p>
+      </Layout>
+    </>
   )
 }
-export default withRouter(Post)
+
+Post.getInitialProps = async (ctx: any) => {
+  const { title } = ctx.query
+  return { title }
+}
+export default Post

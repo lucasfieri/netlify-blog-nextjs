@@ -1,11 +1,16 @@
-import React, { FC } from 'react'
+import React from 'react'
 import Layout from '../components/Layout'
+import { NextPage } from 'next';
+import Head from '../components/Head';
 
-const Index: FC = () => {
+const Index: NextPage = () => {
   return (
-    <Layout title="Petz Dev Portal">
-      <h1>Welcome to Petz Dev Portal</h1>
-    </Layout>
+    <>
+      <Head title="Petz Dev Portal" />
+      <Layout>
+        <h1>Welcome to Petz Dev Portal</h1>
+      </Layout>
+    </>
   )
 }
 export default Index
