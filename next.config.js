@@ -11,7 +11,6 @@ const env = Object.keys(process.env).reduce((acc, curr) => {
 }, {});
 
 module.exports = withImages({
-  distDir: 'build',
   pageExtensions: ['ts', 'tsx'],
   poweredByHeader: false,
   generateEtags: false,
