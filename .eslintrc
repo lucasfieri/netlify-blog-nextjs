@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "airbnb-typescript",
+    "plugin:jest/recommended",
+    "plugin:jest/style"
+  ],
+  "env": {
+    "jest" : true
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "react": {
+      "version": "666"
+    }
+  },
+  "rules": {
+    "comma-dangle": 0,
+    "import/no-named-default": "off",
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "prefer-arrow-callback": 0,
+    "func-names": 0,
+    "newline-before-return": 2
+  }
+}
