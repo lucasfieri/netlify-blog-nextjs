@@ -11,11 +11,10 @@ const env = Object.keys(process.env).reduce((acc, curr) => {
 }, {});
 
 module.exports = withImages({
-  pageExtensions: ['ts', 'tsx'],
   distDir: 'build',
+  pageExtensions: ['ts', 'tsx'],
   poweredByHeader: false,
   generateEtags: false,
-  esModule: true,
   webpack: (config, options) => {
     config.node = { fs: 'empty' }
 

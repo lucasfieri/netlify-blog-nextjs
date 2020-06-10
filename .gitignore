@@ -9,7 +9,7 @@
 # production
 /.next
 /.vscode
-
+/out
 # misc
 .DS_Store
 .env
@@ -25,3 +25,4 @@ _ign*
 # vscode
 .vscode
 /build
+
