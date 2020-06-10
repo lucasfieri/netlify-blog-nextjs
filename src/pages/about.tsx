@@ -25,6 +25,7 @@ const About: NextPage = () => {
         <PostLink title="Hello" />
         <PostLink title="Learn Next.js is awesome" />
         <PostLink title="Deploy apps with Zeit" />
+        <Link href="/newPost"><a>Post MD</a></Link>
       </Layout>
     </>
   )
