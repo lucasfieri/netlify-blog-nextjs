@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import Document, { Html, Main, NextScript, Head } from "next/document";
 import { AppProps } from "next/app";
 import { ServerStyleSheet } from 'styled-components'
@@ -7,12 +7,27 @@ export type DocumentProps = {
   styleTags: any
 }
 export default class CustomDocument extends Document<DocumentProps> {
-  static getInitialProps(ctx:any) {
+  static async getInitialProps(ctx: any) {
     const sheet = new ServerStyleSheet()
-    const page = ctx.renderPage((App: any) => (props: AppProps): ReactElement => sheet.collectStyles(<App {...props} />))
-
-    const styleTags = sheet.getStyleElement()
-    return { ...page, styleTags }
+    const originalRenderPage = ctx.renderPage
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App: any) => (props:AppProps) => sheet.collectStyles(<App {...props} />)
+        })
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        )
+      }
+    } finally {
+      sheet.seal()
+    }
   }
 
   render() {
