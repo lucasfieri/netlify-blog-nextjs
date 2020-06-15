@@ -4,7 +4,7 @@ backend:
 locale: 'pt-BR'
 # logo_url: https://your-site.com/images/logo.svg
 media_folder: public/static/img
-public_folder: /static/img
+public_folder: static/img
 publish_mode: editorial_workflow
 slug:
   encoding: 'ascii'
