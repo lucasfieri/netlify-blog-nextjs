@@ -1,5 +1,5 @@
 backend:
-  name: test-repo
+  name: git-gateway
   branch: master
 locale: 'pt-BR'
 # logo_url: https://your-site.com/images/logo.svg

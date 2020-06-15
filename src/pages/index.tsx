@@ -29,7 +29,7 @@ const Index: NextPage<IndexProps> = ({ postsList }) => {
           const { thumbnail, title, description, author } = post.attributes
           return (
             <>
-              <Link href={`post/${post.slug}`} key={post.slug}>
+              <Link href={`post/${post.slug}`} key={post.slug} prefetch={false}>
                 <a>
                   <img src={thumbnail} />
                   <h2>{title}</h2>
