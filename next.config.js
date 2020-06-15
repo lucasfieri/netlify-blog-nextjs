@@ -32,9 +32,11 @@ const getPathsForPosts = () => {
 };
 
 module.exports = withImages({
+  serverless: true,
   pageExtensions: ['ts', 'tsx'],
   poweredByHeader: false,
   generateEtags: false,
+  exportTrailingSlash: true,
   webpack: (config, _) => {
     config.node = { fs: 'empty' }
 
@@ -55,7 +57,6 @@ module.exports = withImages({
       {
         test: /\.md$/,
         loader: 'frontmatter-markdown-loader',
-        options: { mode: ['react-component'] }
       }
     )
     config.plugins.push(new webpack.DefinePlugin(env));

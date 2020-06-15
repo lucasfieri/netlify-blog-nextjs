@@ -17,19 +17,20 @@ const importBlogPosts = async () => {
 };
 
 type IndexProps = {
-  postsList: any[]
+  postsList: string
 }
 
 const Index: NextPage<IndexProps> = ({ postsList }) => {
+  const list = JSON.parse(postsList);
   return (
     <>
       <Head title="Petz Dev Portal" />
       <div className="blog-list">
-        {postsList.map(post => {
+        {list.map((post:any) => {
           const { thumbnail, title, description, author } = post.attributes
           return (
-            <>
-              <Link href={`post/${post.slug}`} key={post.slug} prefetch={false}>
+            <div className="post" key={post.slug}>
+              <Link href={`post/${post.slug}`} >
                 <a>
                   <img src={thumbnail} />
                   <h2>{title}</h2>
@@ -37,16 +38,22 @@ const Index: NextPage<IndexProps> = ({ postsList }) => {
               </Link>
               <p>{description}</p>
               <p>Escrito por - {author}</p>
-            </>
+            </div>
           );
         })}
       </div>
     </>
   )
 }
-Index.getInitialProps = async () => {
+
+export async function getStaticProps() {
   const postsList = await importBlogPosts();
-  return { postsList };
+  const teste = JSON.stringify(postsList)
+  return {
+    props: {
+      postsList: teste,
+    },
+  }
 }
 
 export default Index
