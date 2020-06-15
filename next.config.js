@@ -3,6 +3,8 @@ require('dotenv').config();
 const webpack = require('webpack');
 const path = require('path');
 const withImages = require('next-images');
+const fs = require('fs');
+const blogPostsFolder = './src/content/posts';
 
 const env = Object.keys(process.env).reduce((acc, curr) => {
   acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);
@@ -10,11 +12,30 @@ const env = Object.keys(process.env).reduce((acc, curr) => {
   return acc;
 }, {});
 
+const getPathsForPosts = () => {
+  return fs
+    .readdirSync(blogPostsFolder)
+    .map(blogName => {
+      const trimmedName = blogName.substring(0, blogName.length - 3);
+      return {
+        [`/post/${trimmedName}`]: {
+          page: '/post/[slug]',
+          query: {
+            slug: trimmedName,
+          },
+        },
+      };
+    })
+    .reduce((acc, curr) => {
+      return { ...acc, ...curr };
+    }, {});
+};
+
 module.exports = withImages({
   pageExtensions: ['ts', 'tsx'],
   poweredByHeader: false,
   generateEtags: false,
-  webpack: (config, options) => {
+  webpack: (config, _) => {
     config.node = { fs: 'empty' }
 
     config.resolve.modules.push(path.resolve(__dirname, 'src'))
@@ -40,5 +61,11 @@ module.exports = withImages({
     config.plugins.push(new webpack.DefinePlugin(env));
 
     return config
-  }
+  },
+    async exportPathMap(defaultPathMap) {
+    return {
+      ...defaultPathMap,
+      ...getPathsForPosts(),
+    };
+  },
 })

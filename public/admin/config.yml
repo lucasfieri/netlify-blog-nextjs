@@ -1,15 +1,26 @@
 backend:
   name: test-repo
   branch: master
-media_folder: public/img
-public_folder: img
+locale: 'pt-BR'
+# logo_url: https://your-site.com/images/logo.svg
+media_folder: public/static/img
+public_folder: /static/img
+publish_mode: editorial_workflow
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+  sanitize_replacement: '_'
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
+  - label: 'posts'
+    name: 'Posts'
+    folder: 'src/content/posts'
     create: true
+    slug: '{{year}}-{{month}}-{{day}}_{{slug}}'
     fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
+      - { label: 'Título ', name: 'title', widget: 'string', required: true }
+      - { label: 'Categoria', name: 'categorie', widget: 'select', multiple: true, options: ["Design", "UX", "Dev"], required: true }
+      - { label: 'Quem escreveu', name: 'author', widget: 'string', required: true }
+      - { label: 'Descrição', name: 'description', widget: 'string', required: true }
+      - { label: 'Data de publicação', name: 'date', widget: 'datetime', required: true, dateFormat: "DD.MM.YYYY" }
+      - { label: 'Imagem Destaque', name: 'thumbnail', widget: 'image', required: true }
+      - { label: 'Post', name: 'body', widget: 'markdown', required: true }

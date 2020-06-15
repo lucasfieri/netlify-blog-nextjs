@@ -9,9 +9,6 @@ const Layout: FC = ({ children }) => (
         <Link href="/">
           <a>Home</a>
         </Link>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
       </nav>
     </header>
     {children}
