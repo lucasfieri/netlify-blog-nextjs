@@ -3,6 +3,9 @@ import { normalize } from 'polished'
 
 const GlobalStyle = createGlobalStyle`
   ${normalize()};
+  *, *::before, *::after {
+    box-sizing: border-box;
+  };
   a {
     text-decoration: none;
     color: inherit;
@@ -11,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     }
   };
   body {
-    font-family: 'Roboto, sans-serif'
+    font-family: 'Roboto'
   }
 `;
 
