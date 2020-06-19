@@ -32,6 +32,7 @@ const Head: FC<HeadProps> = (props) => (
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <link rel="canonical" href={props.url! + props.path!} />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
   </NextHead>
 )
 Head.defaultProps = {
