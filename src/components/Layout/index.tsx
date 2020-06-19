@@ -1,17 +1,15 @@
 import React, { FC } from 'react'
-import Link from 'next/link'
 import LayoutStyle from './style';
+import Theme from '../../styles/ThemeProvider';
+import Header from '../Header';
 
 const Layout: FC = ({ children }) => (
-  <LayoutStyle>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-      </nav>
-    </header>
-    {children}
-  </LayoutStyle>
+  <Theme>
+    <LayoutStyle>
+      <Header />
+      {children}
+    </LayoutStyle>
+
+  </Theme>
 )
 export default Layout
