@@ -9,7 +9,7 @@ const SearchBar: FC = () => {
   <NavStyled>
     <ListStyled>
       {menus.map(menuText => (
-        <Link href="/">
+        <Link href="/" key={menuText}>
           <ItemListStyled key={menuText}>{menuText}</ItemListStyled>
         </Link>
       ))}

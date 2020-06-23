@@ -15,7 +15,8 @@ const theme = {
         darkGrey: '#262626',
         mediumGrey: '#5A5A5A',
         mediumGreySecondary: '#939393',
-        lightGray: '#BABABA'
+        lightGray: '#BABABA',
+        shadowGray: '#7171711a'
       }
     },
     fontSizes: {

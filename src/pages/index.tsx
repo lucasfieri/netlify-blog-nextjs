@@ -1,35 +1,33 @@
 import React from 'react'
 import { NextPage } from 'next';
 import Head from '../components/Head';
-import Link from 'next/link';
 import { importBlogPosts } from '../requests/posts';
+import Card from '../components/Card';
+import IPost from '../interfaces/IPost';
+import DeckCard from '../components/DeckCard';
+import ContentWrapper from '../components/ContentWrapper';
 
 type IndexProps = {
   postsList: string
 }
 
 const Index: NextPage<IndexProps> = ({ postsList }) => {
-  const list = JSON.parse(postsList);
+  const list: IPost[] = JSON.parse(postsList);
   return (
     <>
       <Head title="Petz Dev Portal" />
-      <div className="blog-list">
-        {list.map((post:any) => {
-          const { thumbnail, title, description, author } = post.attributes
-          return (
-            <div className="post" key={post.slug}>
-              <Link href={`post/${post.slug}`} >
-                <a>
-                  <img src={thumbnail} />
-                  <h2>{title}</h2>
-                </a>
-              </Link>
-              <p>{description}</p>
-              <p>Escrito por - {author}</p>
-            </div>
-          );
-        })}
-      </div>
+      <main>
+        <ContentWrapper>
+          <DeckCard>
+            {list.map((post: IPost) => {
+              const { attributes, body, slug } = post
+              return (
+                <Card key={slug} attributes={attributes} body={body} />
+              );
+            })}
+          </DeckCard>
+        </ContentWrapper>
+      </main>
     </>
   )
 }

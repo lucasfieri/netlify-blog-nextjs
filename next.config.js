@@ -5,6 +5,7 @@ const path = require('path');
 const withImages = require('next-images');
 const fs = require('fs');
 const blogPostsFolder = './src/content/posts';
+const Mode = require('frontmatter-markdown-loader/mode');
 
 const env = Object.keys(process.env).reduce((acc, curr) => {
   acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);

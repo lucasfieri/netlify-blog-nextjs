@@ -18,7 +18,7 @@ collections:
     slug: '{{year}}-{{month}}-{{day}}_{{slug}}'
     fields:
       - { label: 'Título ', name: 'title', widget: 'string', required: true }
-      - { label: 'Categoria', name: 'categorie', widget: 'select', multiple: true, options: ["Arquitetura", "Código", "Design", "Transformação"], required: true }
+      - { label: 'Categorias', name: 'categories', widget: 'select', multiple: true, options: ["Arquitetura", "Código", "Design", "Transformação"], required: true }
       - { label: 'Quem escreveu', name: 'author', widget: 'string', required: true }
       - { label: 'Descrição', name: 'description', widget: 'string', required: true }
       - { label: 'Data de publicação', name: 'date', widget: 'datetime', required: true, dateFormat: "DD.MM.YYYY" }
